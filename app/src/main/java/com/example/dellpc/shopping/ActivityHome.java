@@ -9,9 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -19,26 +16,13 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class ActivityHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar mToolbar;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
-    private ImageView headerImage;
-    //horizontal
-    private RecyclerView recyclerViewHorizontal;
-    private ArrayList<ClassHorizontalView> classHorizontalViews;
-    private AdapterHorizontalView adapterHorizontalView;
-
-    //vertical
-    private RecyclerView recyclerViewVertical;
-    private ArrayList<ClassVerticalView> classVerticalViews;
-    private AdapterVerticalView adapterVerticalView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,45 +41,9 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(ActivityHome.this);
 
-        headerImage = (ImageView) findViewById(R.id.imageHeader);
-        headerImage.setImageResource(R.drawable.headerimage);
+        //initializing fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameHome,new FragmentHome()).commit();
 
-        ///////////////////Horizontal Items////////////////////////
-        classHorizontalViews = new ArrayList<>();
-        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingone,"ladies"));
-        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingtwo,"gents"));
-        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingthree,"summer"));
-        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingfour,"winter"));
-        adapterHorizontalView = new AdapterHorizontalView(classHorizontalViews);
-
-        recyclerViewHorizontal = (RecyclerView) findViewById(R.id.recyclerHorizontalItems);
-        recyclerViewHorizontal.hasFixedSize();
-
-        LinearLayoutManager MyLayoutManager = new LinearLayoutManager(ActivityHome.this);
-        MyLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        if (classHorizontalViews.size() > 0 & recyclerViewHorizontal != null) {
-            recyclerViewHorizontal.setAdapter(adapterHorizontalView);
-        }
-        recyclerViewHorizontal.setLayoutManager(MyLayoutManager);
-
-        ////////////////////Vertical Items/////////////////////////////
-        classVerticalViews = new ArrayList<>();
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingone,"Ladies","PKR.500"));
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingtwo,"Gents","PKR.500"));
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingthree,"Summer","PKR.500"));
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingfour,"Winter","PKR.500"));
-        adapterVerticalView = new AdapterVerticalView(classVerticalViews);
-
-        recyclerViewVertical = (RecyclerView) findViewById(R.id.recyclerVerticalItems);
-//        recyclerViewVertical.hasFixedSize();
-
-        if (classVerticalViews.size() > 0 & recyclerViewVertical != null) {
-            recyclerViewVertical.setLayoutManager(new GridLayoutManager(ActivityHome.this, 2));
-            DecoratorRecyclerView itemDecoration = new DecoratorRecyclerView(ActivityHome.this, R.dimen.item_offset);
-            recyclerViewVertical.addItemDecoration(itemDecoration);
-            recyclerViewVertical.setAdapter(adapterVerticalView);
-        }
-//
     }
 
     @Override
@@ -201,7 +149,8 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameHome,new FragmentHome()).commit();
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

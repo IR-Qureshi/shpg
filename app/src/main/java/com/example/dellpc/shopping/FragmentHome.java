@@ -3,15 +3,31 @@ package com.example.dellpc.shopping;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentHome extends Fragment {
+    private ImageView headerImage;
+    //horizontal
+    private RecyclerView recyclerViewHorizontal;
+    private ArrayList<ClassHorizontalView> classHorizontalViews;
+    private AdapterHorizontalView adapterHorizontalView;
+
+    //vertical
+    private RecyclerView recyclerViewVertical;
+    private ArrayList<ClassVerticalView> classVerticalViews;
+    private AdapterVerticalView adapterVerticalView;
 
 
     public FragmentHome() {
@@ -23,7 +39,49 @@ public class FragmentHome extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_fragment_home, container, false);
+
+        //setting header image
+        headerImage = (ImageView) view.findViewById(R.id.imageHeader);
+        headerImage.setImageResource(R.drawable.headerimage);
+
+        ///////////////////Horizontal Items////////////////////////
+        classHorizontalViews = new ArrayList<>();
+        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingone,"ladies"));
+        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingtwo,"gents"));
+        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingthree,"summer"));
+        classHorizontalViews.add(new ClassHorizontalView(R.drawable.clothingfour,"winter"));
+        adapterHorizontalView = new AdapterHorizontalView(classHorizontalViews);
+
+        recyclerViewHorizontal = (RecyclerView) view.findViewById(R.id.recyclerHorizontalItems);
+        recyclerViewHorizontal.hasFixedSize();
+
+        LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
+        MyLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        if (classHorizontalViews.size() > 0 & recyclerViewHorizontal != null) {
+            recyclerViewHorizontal.setAdapter(adapterHorizontalView);
+        }
+        recyclerViewHorizontal.setLayoutManager(MyLayoutManager);
+
+        ////////////////////Vertical Items/////////////////////////////
+        classVerticalViews = new ArrayList<>();
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingone,"Ladies","PKR.500"));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingtwo,"Gents","PKR.500"));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingthree,"Summer","PKR.500"));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingfour,"Winter","PKR.500"));
+        adapterVerticalView = new AdapterVerticalView(classVerticalViews);
+
+        recyclerViewVertical = (RecyclerView) view.findViewById(R.id.recyclerVerticalItems);
+//        recyclerViewVertical.hasFixedSize();
+
+        if (classVerticalViews.size() > 0 & recyclerViewVertical != null) {
+            recyclerViewVertical.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+            DecoratorRecyclerView itemDecoration = new DecoratorRecyclerView(getActivity(), R.dimen.item_offset);
+            recyclerViewVertical.addItemDecoration(itemDecoration);
+            recyclerViewVertical.setAdapter(adapterVerticalView);
+        }
+
+        return view;
     }
 
 }
