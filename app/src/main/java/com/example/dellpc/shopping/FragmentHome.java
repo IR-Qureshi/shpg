@@ -62,6 +62,7 @@ public class FragmentHome extends Fragment {
             recyclerViewHorizontal.setAdapter(adapterHorizontalView);
         }
         recyclerViewHorizontal.setLayoutManager(MyLayoutManager);
+        ///////////////////////////end horizontal view///////////////////////////////////////////
 
         ////////////////////Vertical Items/////////////////////////////
         classVerticalViews = new ArrayList<>();
@@ -69,10 +70,21 @@ public class FragmentHome extends Fragment {
         classVerticalViews.add(new ClassVerticalView(R.drawable.clothingtwo,"Gents","PKR.500"));
         classVerticalViews.add(new ClassVerticalView(R.drawable.clothingthree,"Summer","PKR.500"));
         classVerticalViews.add(new ClassVerticalView(R.drawable.clothingfour,"Winter","PKR.500"));
-        adapterVerticalView = new AdapterVerticalView(classVerticalViews);
+        adapterVerticalView = new AdapterVerticalView(getActivity(), classVerticalViews, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+
+                Bundle bundle=new Bundle();
+                String product = classVerticalViews.get(position).getProductName();
+                bundle.putString("itemName", product);
+                FragmentItemDes fragmentItemDes = new FragmentItemDes();
+                fragmentItemDes.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.frameHome, fragmentItemDes).commit();
+
+            }
+        });
 
         recyclerViewVertical = (RecyclerView) view.findViewById(R.id.recyclerVerticalItems);
-//        recyclerViewVertical.hasFixedSize();
 
         if (classVerticalViews.size() > 0 & recyclerViewVertical != null) {
             recyclerViewVertical.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -80,7 +92,7 @@ public class FragmentHome extends Fragment {
             recyclerViewVertical.addItemDecoration(itemDecoration);
             recyclerViewVertical.setAdapter(adapterVerticalView);
         }
-
+///////////////////////////end vertical view///////////////////////////////////////////
         return view;
     }
 
