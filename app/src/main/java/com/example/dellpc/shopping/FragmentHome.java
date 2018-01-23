@@ -1,6 +1,7 @@
 package com.example.dellpc.shopping;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -77,9 +78,12 @@ public class FragmentHome extends Fragment {
                 Bundle bundle=new Bundle();
                 String product = classVerticalViews.get(position).getProductName();
                 bundle.putString("itemName", product);
-                FragmentItemDes fragmentItemDes = new FragmentItemDes();
-                fragmentItemDes.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.frameHome, fragmentItemDes).commit();
+//                FragmentItemDes fragmentItemDes = new FragmentItemDes();
+//                fragmentItemDes.setArguments(bundle);
+//                getFragmentManager().beginTransaction().replace(R.id.frameHome, fragmentItemDes).commit();
+                Intent intent = new Intent(getActivity(),ActivityItemDes.class);
+                intent.putExtra("itemName", product);
+                startActivity(intent);
 
             }
         });

@@ -20,7 +20,9 @@
         <activity android:name=".ActivityCategory" />
         <activity
             android:name=".ActivityHome"
-            android:theme="@style/AppThemeToolBar"/>
+            android:theme="@style/AppThemeToolBar" />
+        <activity android:name=".ActivityItemDes"
+            android:theme="@style/AppThemeToolBar"></activity>
     </application>
 
 </manifest>
