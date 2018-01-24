@@ -11,12 +11,14 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ActivityItemDes extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private TextView product;
+    public ImageView p_image;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
@@ -30,9 +32,15 @@ public class ActivityItemDes extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String product1 = getIntent().getStringExtra("itemName");
-        product = (TextView) findViewById(R.id.text4);
-        product.setText(product1);
+        p_image = (ImageView) findViewById(R.id.des_product_photo);
+        Bundle b = getIntent().getBundleExtra("imageId");
+        int image = b.getInt("imageId");
+
+        p_image.setImageResource(image);
+//        String product1 = getIntent().getStringExtra("itemName");
+//        product = (TextView) findViewById(R.id.text4);
+//        product.setText(product1);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

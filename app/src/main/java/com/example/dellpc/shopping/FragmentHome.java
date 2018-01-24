@@ -77,12 +77,15 @@ public class FragmentHome extends Fragment {
 
                 Bundle bundle=new Bundle();
                 String product = classVerticalViews.get(position).getProductName();
+                int image = classVerticalViews.get(position).getImageId();
                 bundle.putString("itemName", product);
+                bundle.putInt("imageId",image);
 //                FragmentItemDes fragmentItemDes = new FragmentItemDes();
 //                fragmentItemDes.setArguments(bundle);
 //                getFragmentManager().beginTransaction().replace(R.id.frameHome, fragmentItemDes).commit();
                 Intent intent = new Intent(getActivity(),ActivityItemDes.class);
                 intent.putExtra("itemName", product);
+                intent.putExtra("imageId", bundle);
                 startActivity(intent);
 
             }
