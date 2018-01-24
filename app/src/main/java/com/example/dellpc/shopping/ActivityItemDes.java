@@ -17,7 +17,8 @@ import android.widget.TextView;
 public class ActivityItemDes extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private TextView product;
+    private TextView p_name;
+    private TextView p_price;
     public ImageView p_image;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
@@ -33,10 +34,17 @@ public class ActivityItemDes extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         p_image = (ImageView) findViewById(R.id.des_product_photo);
-        Bundle b = getIntent().getBundleExtra("imageId");
+        p_name = (TextView) findViewById(R.id.des_product_name);
+        p_price = (TextView) findViewById(R.id.dec_product_price);
+
+        Bundle b = getIntent().getBundleExtra("data");
         int image = b.getInt("imageId");
+        String product_name = b.getString("itemName");
+        String product_des = b.getString("itemPrice");
 
         p_image.setImageResource(image);
+        p_name.setText(product_name);
+        p_price.setText(product_des);
 //        String product1 = getIntent().getStringExtra("itemName");
 //        product = (TextView) findViewById(R.id.text4);
 //        product.setText(product1);

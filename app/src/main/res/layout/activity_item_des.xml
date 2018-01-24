@@ -5,12 +5,17 @@
     android:id="@+id/activity_item_des"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.dellpc.shopping.ActivityItemDes">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/appbarLayout"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <include
@@ -19,21 +24,98 @@
             android:elevation="7dp"
             app:layout_collapseMode="pin">
         </include>
-
     </android.support.design.widget.AppBarLayout>
-<android.support.v7.widget.CardView
-    android:layout_width="250dp"
-    android:layout_height="250dp"
-    android:layout_centerHorizontal="true"
-    android:layout_centerInParent="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/header"
+        android:background="#FFFFFF"
+        android:layout_below="@id/appbarLayout">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/likesymbol"
+            android:background="@drawable/likefill"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_like"
+            android:text="1234"
+            android:layout_toRightOf="@id/likesymbol"
+            android:layout_marginTop="7dp"/>
+    </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_below="@id/header"
+        android:id="@+id/image_header"
+        android:background="#FFFFFF">
+
+        <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/des_product_photo"
+        android:elevation="12dp"
         android:scaleType="centerCrop"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/image_header"
+        android:id="@+id/view3"
+        android:background="#FFFFFF">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="32dp"
+        android:paddingRight="20dp"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/des_product_name"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Product Name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:id="@+id/dec_product_price"
+            android:layout_below="@id/des_product_name"/>
+    </RelativeLayout>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view3"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="20dp"
+        android:text="Description"/>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
