@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,12 +15,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ActivityItemDes extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private TextView p_name;
     private TextView p_price;
-    public ImageView p_image;
+    private ImageView p_image;
+    private TextView p_des;
+    private TextView p_sizes;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
@@ -36,15 +41,23 @@ public class ActivityItemDes extends AppCompatActivity {
         p_image = (ImageView) findViewById(R.id.des_product_photo);
         p_name = (TextView) findViewById(R.id.des_product_name);
         p_price = (TextView) findViewById(R.id.dec_product_price);
+        p_des = (TextView) findViewById(R.id.dec_product_des);
+        p_sizes = (TextView) findViewById(R.id.dec_product_size);
+
 
         Bundle b = getIntent().getBundleExtra("data");
         int image = b.getInt("imageId");
         String product_name = b.getString("itemName");
-        String product_des = b.getString("itemPrice");
+        String product_price = b.getString("itemPrice");
+        String product_des  = b.getString("itemDes");
+        ArrayList<CharSequence> listsize = b.getCharSequenceArrayList("sizes");
+        Log.d("check1",listsize.toString());
 
         p_image.setImageResource(image);
         p_name.setText(product_name);
-        p_price.setText(product_des);
+        p_price.setText(product_price);
+        p_des.setText(product_des);
+        p_sizes.setText(listsize.toString());
 //        String product1 = getIntent().getStringExtra("itemName");
 //        product = (TextView) findViewById(R.id.text4);
 //        product.setText(product1);

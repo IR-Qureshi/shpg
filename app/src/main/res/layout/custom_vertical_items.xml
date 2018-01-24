@@ -29,8 +29,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Product Des"
-        android:id="@+id/cvhProductDes"
+        android:text="Product Price"
+        android:id="@+id/cvhProductPrice"
         android:textStyle="bold"
         android:layout_below="@id/cvhImage"
         android:layout_marginRight="5dp"
@@ -38,7 +38,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cvhProductDes"
+        android:layout_below="@id/cvhProductPrice"
         android:layout_centerHorizontal="true">
 
         <Button

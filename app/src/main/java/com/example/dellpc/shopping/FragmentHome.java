@@ -65,23 +65,34 @@ public class FragmentHome extends Fragment {
         recyclerViewHorizontal.setLayoutManager(MyLayoutManager);
         ///////////////////////////end horizontal view///////////////////////////////////////////
 
+        //////////////////////////////List view sizes////////////////////////////
+        ArrayList<CharSequence> sizes = new ArrayList<>();
+        sizes.add("S");
+        sizes.add("M");
+        sizes.add("X");
+        sizes.add("XL");
+
         ////////////////////Vertical Items/////////////////////////////
         classVerticalViews = new ArrayList<>();
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingone,"Ladies","PKR.500"));
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingtwo,"Gents","PKR.500"));
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingthree,"Summer","PKR.500"));
-        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingfour,"Winter","PKR.500"));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingone,"Ladies","PKR.500","cool clothes prevent you from feeling too hot",sizes));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingtwo,"Gents","PKR.500","designer clothes are made by a famous designer and are usually expensive and fashionable",sizes));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingthree,"Summer","PKR.500","designer clothes are made by a famous designer and are usually expensive and fashionable",sizes));
+        classVerticalViews.add(new ClassVerticalView(R.drawable.clothingfour,"Winter","PKR.500","designer clothes are made by a famous designer and are usually expensive and fashionable",sizes));
         adapterVerticalView = new AdapterVerticalView(getActivity(), classVerticalViews, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
 
                 Bundle bundle=new Bundle();
                 String product = classVerticalViews.get(position).getProductName();
-                String price = classVerticalViews.get(position).getProductDes();
+                String price = classVerticalViews.get(position).getProductPrice();
+                String des = classVerticalViews.get(position).getProductDes();
                 int image = classVerticalViews.get(position).getImageId();
+                ArrayList<CharSequence> sizes = classVerticalViews.get(position).getList();
                 bundle.putString("itemName", product);
                 bundle.putString("itemPrice", price);
                 bundle.putInt("imageId",image);
+                bundle.putString("itemDes",des);
+                bundle.putCharSequenceArrayList("sizes",sizes);
 //                FragmentItemDes fragmentItemDes = new FragmentItemDes();
 //                fragmentItemDes.setArguments(bundle);
 //                getFragmentManager().beginTransaction().replace(R.id.frameHome, fragmentItemDes).commit();

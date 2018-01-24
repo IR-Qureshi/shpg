@@ -82,7 +82,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="1dp"
         android:layout_below="@id/image_header"
         android:id="@+id/view3"
         android:background="#FFFFFF">
@@ -108,6 +108,7 @@
     </RelativeLayout>
     </RelativeLayout>
     <TextView
+        android:id="@+id/dec_product_des_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/view3"
@@ -115,7 +116,59 @@
         android:layout_marginBottom="5dp"
         android:paddingLeft="32dp"
         android:paddingRight="20dp"
+        android:textStyle="bold"
         android:text="Description"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dec_product_des_t"
+                android:id="@+id/dec_product_des_v"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="20dp"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dec_product_des"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/dec_product_des_d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dec_product_des_v"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="20dp"
+                android:textStyle="bold"
+                android:text="Sizes"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dec_product_des_d"
+                android:id="@+id/dec_product_des_vs"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="32dp"
+                android:paddingRight="20dp"
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dec_product_size"/>
+            </RelativeLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/dec_product_des_b"
+                    android:text="add to cart"
+                    android:background="#ff5959"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:layout_below="@id/dec_product_des_vs"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

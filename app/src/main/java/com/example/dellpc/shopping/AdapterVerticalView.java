@@ -39,7 +39,7 @@ public class AdapterVerticalView extends RecyclerView.Adapter<ViewHolderVertical
     public void onBindViewHolder(ViewHolderVerticalView holder, int position) {
         holder.mImageView.setImageResource(list.get(position).getImageId());
         holder.mProductName.setText(list.get(position).getProductName());
-        holder.mProductDes.setText(list.get(position).getProductDes());
+        holder.mProductPrice.setText(list.get(position).getProductPrice());
     }
 
     @Override

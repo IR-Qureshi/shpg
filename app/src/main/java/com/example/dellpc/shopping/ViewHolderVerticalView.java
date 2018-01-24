@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class ViewHolderVerticalView extends RecyclerView.ViewHolder{
     ImageView mImageView;
     TextView mProductName;
-    TextView mProductDes;
+    TextView mProductPrice;
     Button mButtonAdd;
     CardView mCardView;
 
@@ -24,7 +24,8 @@ public class ViewHolderVerticalView extends RecyclerView.ViewHolder{
         mCardView = (CardView) itemView.findViewById(R.id.card_view);
         mImageView = (ImageView) itemView.findViewById(R.id.cvhImage);
         mProductName = (TextView) itemView.findViewById(R.id.cvhProductName);
-        mProductDes = (TextView) itemView.findViewById(R.id.cvhProductDes);
+        mProductPrice = (TextView) itemView.findViewById(R.id.cvhProductPrice);
+
 
     }
 }
