@@ -21,8 +21,10 @@
         <activity
             android:name=".ActivityHome"
             android:theme="@style/AppThemeToolBar" />
-        <activity android:name=".ActivityItemDes"
-            android:theme="@style/AppThemeToolBar"></activity>
+        <activity
+            android:name=".ActivityItemDes"
+            android:theme="@style/AppThemeToolBar" />
+        <activity android:name=".ActivityBasket"></activity>
     </application>
 
 </manifest>

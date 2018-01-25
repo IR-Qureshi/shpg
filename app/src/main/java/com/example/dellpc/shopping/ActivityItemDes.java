@@ -1,5 +1,6 @@
 package com.example.dellpc.shopping;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -9,10 +10,15 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,6 +31,9 @@ public class ActivityItemDes extends AppCompatActivity {
     private ImageView p_image;
     private TextView p_des;
     private TextView p_sizes;
+    private Button b_add;
+    private ListView list_sizes;
+    private ArrayAdapter<String> adapter;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
@@ -43,6 +52,7 @@ public class ActivityItemDes extends AppCompatActivity {
         p_price = (TextView) findViewById(R.id.dec_product_price);
         p_des = (TextView) findViewById(R.id.dec_product_des);
         p_sizes = (TextView) findViewById(R.id.dec_product_size);
+        b_add = (Button) findViewById(R.id.dec_product_des_b);
 
 
         Bundle b = getIntent().getBundleExtra("data");
@@ -50,14 +60,36 @@ public class ActivityItemDes extends AppCompatActivity {
         String product_name = b.getString("itemName");
         String product_price = b.getString("itemPrice");
         String product_des  = b.getString("itemDes");
-        ArrayList<CharSequence> listsize = b.getCharSequenceArrayList("sizes");
-        Log.d("check1",listsize.toString());
+        final ArrayList listsize = b.getCharSequenceArrayList("sizes");
 
         p_image.setImageResource(image);
         p_name.setText(product_name);
         p_price.setText(product_price);
         p_des.setText(product_des);
         p_sizes.setText(listsize.toString());
+        b_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(ActivityItemDes.this);
+                dialog.setContentView(R.layout.custom_dialog_size);
+                dialog.setTitle("Sizes");
+                list_sizes= (ListView) dialog.findViewById(R.id.list_sizes);
+
+                adapter = new ArrayAdapter(ActivityItemDes.this,android.R.layout.simple_list_item_1,listsize);
+                list_sizes.setAdapter(adapter);
+                dialog.show();
+                list_sizes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Object o = list_sizes.getItemAtPosition(position);
+                        String s = (String) o;
+                        Log.d("check1",s);
+
+                    }
+                });
+            }
+        });
+
 //        String product1 = getIntent().getStringExtra("itemName");
 //        product = (TextView) findViewById(R.id.text4);
 //        product.setText(product1);
