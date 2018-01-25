@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="12dp"
+    android:paddingBottom="1dp">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/b_image"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:layout_centerVertical="true"
+        android:id="@+id/b_product_name"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_toRightOf="@id/b_image"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/b_product_size"
+        android:text="size"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_below="@id/b_product_name"
+        android:layout_toRightOf="@id/b_image"/>
+    <TextView
+        android:id="@+id/b_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PKR.0"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="remove"
+       android:id="@+id/b_remove"
+       android:layout_below="@id/b_product_price"
+       android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
