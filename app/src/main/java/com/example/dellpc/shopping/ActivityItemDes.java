@@ -2,6 +2,7 @@ package com.example.dellpc.shopping;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -84,6 +85,8 @@ public class ActivityItemDes extends AppCompatActivity {
                         Object o = list_sizes.getItemAtPosition(position);
                         String s = (String) o;
                         Log.d("check1",s);
+                        Intent i = new Intent(ActivityItemDes.this, ActivityBasket.class);
+                        startActivity(i);
 
                     }
                 });
